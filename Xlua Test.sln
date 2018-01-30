@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlua Test.CSharp", "Xlua Test.CSharp.csproj", "{32ED369B-A99C-A02E-468E-D34B0FC01DDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlua Test.CSharp.Editor", "Xlua Test.CSharp.Editor.csproj", "{E200C3CD-058F-0B4A-3B46-C721BA7A98FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32ED369B-A99C-A02E-468E-D34B0FC01DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32ED369B-A99C-A02E-468E-D34B0FC01DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32ED369B-A99C-A02E-468E-D34B0FC01DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32ED369B-A99C-A02E-468E-D34B0FC01DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E200C3CD-058F-0B4A-3B46-C721BA7A98FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E200C3CD-058F-0B4A-3B46-C721BA7A98FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E200C3CD-058F-0B4A-3B46-C721BA7A98FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E200C3CD-058F-0B4A-3B46-C721BA7A98FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
