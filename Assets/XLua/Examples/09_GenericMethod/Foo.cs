@@ -79,7 +79,7 @@ public static class FooExtension
         Debug.Log("PlainExtension");
     }
 
-    public static T Extension1<T>(this T a) where T : Foo1Parent
+    public static T Extension1<T>(this T a) where T : Foo1Parent  //where 子句用于指定类型约束，这些约束可以作为泛型声明中定义的类型参数的变量。
     {
         Debug.Log(string.Format("Extension1<{0}>", typeof (T)));
         return a;

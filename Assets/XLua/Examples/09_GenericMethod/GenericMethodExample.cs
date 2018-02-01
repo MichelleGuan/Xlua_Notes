@@ -8,7 +8,7 @@ public class GenericMethodExample : MonoBehaviour
         local foo2 = CS.Foo2Child()
 
         local obj = CS.UnityEngine.GameObject()
-        foo1:PlainExtension()
+        foo1:PlainExtension()    --foo.cs页面最下面
         foo1:Extension1()
         foo1:Extension2(obj) -- overload1
         foo1:Extension2(foo2) -- overload2

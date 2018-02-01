@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using XLua;
-
+//点击热更按钮，你会看到打印了相反箭头，这就是热更的简单实现
+//项目热更一般会把lua打包,然后在C#调用对应版本的lua
+//这个案例如果不好用，请再注入一次
 [Hotfix]
 public class HotfixTest : MonoBehaviour
 {
     LuaEnv luaenv = new LuaEnv();
 
-    public int tick = 0; //如果是private的，在lua设置xlua.private_accessible(CS.HotfixTest)后即可访问
+    private int tick = 0; //如果是private的，在lua设置xlua.private_accessible(CS.HotfixTest)后即可访问
 
     // Use this for initialization
     void Start()
     {
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -22,12 +23,13 @@ public class HotfixTest : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    void OnGUI()  //每一帧被调用，渲染GUI
     {
         if (GUI.Button(new Rect(10, 10, 300, 80), "Hotfix"))
         {
             luaenv.DoString(@"
-                xlua.hotfix(CS.HotfixTest, 'Update', function(self)
+                xlua.private_accessible(CS.HotfixTest)
+                xlua.hotfix(CS.HotfixTest, 'Update', function(self) --类名，方法名，替换
                     self.tick = self.tick + 1
                     if (self.tick % 50) == 0 then
                         print('<<<<<<<<Update in lua, tick = ' .. self.tick)
@@ -58,5 +60,6 @@ public class HotfixTest : MonoBehaviour
         style.fontSize = 16;
         GUI.TextArea(new Rect(10, 100, 500, 290), chHint, style);
         GUI.TextArea(new Rect(10, 400, 500, 290), enHint, style);
+        GUI.TextArea(new Rect(12,200,100,100),"hahaha",style);
     }
 }

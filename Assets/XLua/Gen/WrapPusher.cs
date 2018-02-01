@@ -190,7 +190,7 @@ namespace XLua
 				
             }
 			
-			//var translator = this;
+			var translator = this;
 			LuaAPI.xlua_pushcstable(L, 2, PushAsTableStruct_TypeID);
 			
 			LuaAPI.xlua_pushasciistring(L, "x");

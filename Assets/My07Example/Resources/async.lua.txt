@@ -1,0 +1,36 @@
+
+local util = require 'xlua.util'  --lua所有方法基本来自这个类
+local message_box = require 'messageBox'  
+
+-------------------------async_recharge-----------------------------
+local function async_recharge(num, cb) --模拟的异步充值
+    print('requst server...')
+    cb(true, num)
+end
+
+local recharge = util.async_to_sync(async_recharge) --这个异步方法在util文件一开头实现，请参照源码
+-------------------------async_recharge end----------------------------
+local buy = function()
+    
+     message_box.alert("新品推荐","来一杯浓缩咖啡吧")
+     message_box.alert("余额提醒","您余额不足，请充值！")
+	 message_box.recharge() 
+	if message_box.confirm("确认充值吗？","确认框" ) then  
+	 if (CS.MessageBox.dropdownValue== 0) then
+	    value = 50  
+	 elseif(CS.MessageBox.dropdownValue ==1)then
+	    value = 100
+	 elseif(CS.MessageBox.dropdownValue ==2) then
+	    value = 200	 
+	end             
+		local r1, r2 = recharge(value) --callback 返回两个参数 bool和数值
+		print('recharge result', r1, r2)
+		message_box.alert("提示","您成功充值了"..value.."元！")
+	else
+	    print('cancel')
+	    message_box.alert("提示","取消充值！")
+	end	
+end
+--将按钮监听点击事件，绑定buy方法（.表示从属关系，;可以理解成this）
+CS.UnityEngine.GameObject.Find("Button"):GetComponent("Button").onClick:AddListener(util.coroutine_call(buy))
+

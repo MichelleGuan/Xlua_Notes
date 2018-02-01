@@ -7,7 +7,7 @@
 local util = require 'xlua.util'
  local yield_return = (require 'cs_coroutine').yield_return  --绑定yeild return,绑定实现看不懂的话可以拿来复用
 
-local co = coroutine.create(function()   --lua语言开始协程
+local co = coroutine.create(function()   --lua语言创建协程
     print('coroutine start!')
     local s = os.time()   --记录当前时间
     yield_return(CS.UnityEngine.WaitForSeconds(3))  --过3秒再执行
@@ -24,10 +24,3 @@ end)
 assert(coroutine.resume(co)) --执行这个协程，如果出错，抛出异常
 
 
---local function DoCoroutine()
---return util.cs_generator(function()
---coroutine.yield(CS.UnityEngine.WaitForSeconds(3))
--- print('wait interval:')
--- end);
--- end
---local Test=m_CSBehaviour.StartCoroutine(DoCoroutine());

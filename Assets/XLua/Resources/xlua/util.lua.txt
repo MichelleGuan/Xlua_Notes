@@ -5,13 +5,16 @@
 -- Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 local unpack = unpack or table.unpack
-
+--异步处理的方法，通过回调
 local function async_to_sync(async_func, callback_pos)
+--在rets即返回值为空的时候waiting并挂起协程，再返回之后执行协程，并且完成回调
+--只是协程使用，就是执行完前面的（如www）,或者嵌套的协程，再执行回调，由于异步，所以不阻塞进程
+--这里可能理解的不全对，请自己推敲
     return function(...)
-        local _co = coroutine.running() or error ('this function must be run in coroutine')
+        local _co = coroutine.running() or error ('this function must be run in coroutine')   
         local rets
         local waiting = false
-        local function cb_func(...)
+        local function cb_func(...)   
             if waiting then
                 assert(coroutine.resume(_co, ...))
             else
@@ -19,7 +22,9 @@ local function async_to_sync(async_func, callback_pos)
             end
         end
         local params = {...}
-        table.insert(params, callback_pos or (#params + 1), cb_func)
+		--三个参数分别是，往哪个表的哪个位置，插入什么东西
+        table.insert(params, callback_pos or (#params + 1), cb_func)  
+		--lua unpack方法
         async_func(unpack(params))
         if rets == nil then
             waiting = true

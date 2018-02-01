@@ -24,6 +24,7 @@ public class InvokeLua : MonoBehaviour
     public delegate ICalc CalcNew(int mult, params string[] args);
     //lua元表操作__index，可掉用Add方法，self=this，...对应可变字符串
     private string script = @"
+              --这个是luatable的元表,__index,在表和元表都没有这个键的时候调用
                 local calc_mt = {
                     __index = {
                         Add = function(self, a, b)
@@ -31,7 +32,7 @@ public class InvokeLua : MonoBehaviour
                         end
                     }
                 }
-
+             --lua table
                 Calc = {
 	                New = function (mult, ...)
                         print(...)

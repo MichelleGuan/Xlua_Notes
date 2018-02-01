@@ -10,10 +10,10 @@ local gameobject = CS.UnityEngine.GameObject('Coroutine_Runner')   --´´½¨Ò»¸öÓÎÏ
 CS.UnityEngine.Object.DontDestroyOnLoad(gameobject)  
 local cs_coroutine_runner = gameobject:AddComponent(typeof(CS.Coroutine_Runner))
 
-local function async_yield_return(to_yield, cb)                    --È¡µ½C#·µ»ØÖµ
+local function async_yield_return(to_yield, cb)                    --µÚÒ»¸ö²ÎÊıÓĞÁ½ÖÖÀàĞÍ¿ÉÄÜ£¬Òò´ËÔÙ·â×°Ò»²ã
     cs_coroutine_runner:YieldAndCallback(to_yield, cb)  
 end
 
 return {
-    yield_return = util.async_to_sync(async_yield_return)          --Ê¹ÓÃXlua·â×°µÄAPI´¦Àí
+    yield_return = util.async_to_sync(async_yield_return)          --Ê¹ÓÃXlua·â×°µÄAPI´¦Àí£¨async_to_sync£©
 }

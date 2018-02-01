@@ -6,12 +6,11 @@ namespace XLuaTest
     public class IntObject : RawObject
     {
         int mTarget;
-
+        double tTarget;
         public IntObject(int i)
         {
             mTarget = i;
         }
-
         public object Target
         {
             get
@@ -20,7 +19,21 @@ namespace XLuaTest
             }
         }
     }
-
+    public class DoubleObject : RawObject
+    {
+        double tTarget;
+        public DoubleObject(int i)
+        {
+            tTarget = i;
+        }
+        public object Target
+        {
+            get
+            {
+                return tTarget;
+            }
+        }
+    }
     public class RawObjectTest : MonoBehaviour
     {
         public static void PrintType(object o)
@@ -33,7 +46,7 @@ namespace XLuaTest
         {
             LuaEnv luaenv = new LuaEnv();
             //直接传1234到一个object参数，xLua将选择能保留最大精度的long来传递
-            luaenv.DoString("CS.XLuaTest.RawObjectTest.PrintType(1234)");
+            luaenv.DoString("CS.XLuaTest.RawObjectTest.PrintType(CS.XLuaTest.DoubleObject(1234))");
             //通过一个继承RawObject的类，能实现指明以一个int来传递
             luaenv.DoString("CS.XLuaTest.RawObjectTest.PrintType(CS.XLuaTest.IntObject(1234))");
             luaenv.Dispose();

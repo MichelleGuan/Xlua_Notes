@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MyExample/myexample.unity
+- path: Assets/XLua/Examples/10_SignatureLoader/SignatureLoaderTest.unity
   isLoaded: 1
   isActive: 1

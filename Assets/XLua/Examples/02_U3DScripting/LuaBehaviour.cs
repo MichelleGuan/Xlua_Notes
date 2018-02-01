@@ -34,7 +34,7 @@ public class LuaBehaviour : MonoBehaviour {
     {
         scriptEnv = luaEnv.NewTable();//这是一个luatable(键值对的数据结构，包含数组和表)
         LuaTable meta = luaEnv.NewTable();
-        meta.Set("__index", luaEnv.Global);//luatable加入Key __index,Value luaEnv.Global
+        meta.Set("__index", luaEnv.Global);//metatable加入Key __index,Value luaEnv.Global
         scriptEnv.SetMetaTable(meta);//设置meta为table的metatable
         meta.Dispose();
         scriptEnv.Set("self", this);
