@@ -1,7 +1,7 @@
 # Xlua_Notes
 腾讯车前辈的开源热更框架 地址https://github.com/Tencent/xLua ，因为只是增加了案例注释和在原案例基础上扩展，就不打扰原作者了。有需要的萌新可以参照注释和这个文档，更好的学习xlua。<br>
 
-近期更新计划：热更完整案例。<br>
+热更完整案例已经更新，请查看Xlua_UGUI_Demo。<br>
 如果存在版本问题报错，请reimport
 
 1.热更协程写法<br>
